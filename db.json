@@ -1,0 +1,17 @@
+{
+  "employee": [
+    {
+      "name": "Sachin Kaythamwar",
+      "profileimg": "https://i.pravatar.cc/35?img=8",
+      "gender": "male",
+      "department": [
+        "HR",
+        "Sales"
+      ],
+      "salary": "50000",
+      "date": "2020/09/21",
+      "note": "asdawdaw",
+      "id": 1
+    }
+  ]
+}

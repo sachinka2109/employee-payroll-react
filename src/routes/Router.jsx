@@ -8,6 +8,7 @@ const Router = () => {
         <Routes>
             <Route path='' element={<Dashboard/>}/>
             <Route path='/add' element={<PayrollForm/>} />
+            <Route path='/edit' element={<PayrollForm/>} />
         </Routes>
     </BrowserRouter>
   )
