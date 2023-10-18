@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Menu, Table, Tag, Space, Button } from "antd";
+import { Menu, Table, Tag, Space, Button, Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { deleteEmployee, getEmployee } from "../services/dataService";
 import { useNavigate } from "react-router-dom";
 
-const columns =  [
+const columns = [
   {
     title: "#",
     dataIndex: "id",
@@ -74,14 +74,13 @@ const columns =  [
     align: "center",
     render: (_, record) => (
       <Space size="middle">
-        <Button onClick={()=>handleDelete(record)}>Delete</Button>
+        <Button onClick={() => handleDelete(record)}>Delete</Button>
       </Space>
     ),
   },
 ];
 
-
-const handleDelete = async(record) => {
+const handleDelete = async (record) => {
   await deleteEmployee(record.id);
 };
 
@@ -93,7 +92,7 @@ const Dashboard = () => {
     setData(res.data);
   };
   const handleEdit = (record) => {
-    navigate('/edit',{state: record})
+    navigate("/edit", { state: record });
   };
   useEffect(() => {
     fetchEmployee();
@@ -101,29 +100,37 @@ const Dashboard = () => {
   console.log(data.data);
   return (
     <>
-      <Menu>
-        <Menu.Item disabled className="h-50" icon={<UserOutlined />}>
-          <span>
-            EMPLOYEE<span>PAYROLL</span>
+      <Menu className="bg-primary">
+        <Menu.Item
+          className="h-50 fs-6 fw-bold"
+          style={{ width: "230px" }}
+          icon={<UserOutlined />}
+        >
+          <span className="text-success text-wrap">
+            EMPLOYEE<span className="text-secondary">PAYROLL</span>
           </span>
         </Menu.Item>
       </Menu>
-      <div className="d-flex flex-column align-items-center">
-        <Button onClick={() => navigate("/add")}>+ Add Employee</Button>
-        <Table
-          columns={columns}
-          dataSource={data}
-          scroll={{ x: true }}
-          onRow={(record, rowIndex) => ({
-            onClick: (e) => {
-              const clickedCellClassName = e.target.className;
-              const isActionsColumn = clickedCellClassName.includes("ant-table-cell-action");
-              if (rowIndex !== -1 && !isActionsColumn) { // Check if it's not the last row
-                handleEdit(record);
-              }
-            },
-          })}
-        />
+      <div className="d-flex flex-column align-items-center my-5 mx-auto">
+        <div style={{ width: "1000px" }}>
+          <div className="d-flex align-items-center justify-content-between">
+            <Typography.Title level={2} style={{ margin: 0 }}>
+              Employee Details
+            </Typography.Title>
+            <Button
+              type="primary"
+              style={{ backgroundColor: "green" }}
+              onClick={() => navigate("/add")}
+            >
+              + Add Employee
+            </Button>
+          </div>
+          <Table
+            columns={columns}
+            scroll={{ x: true }}
+            dataSource={data}
+          />
+        </div>
       </div>
     </>
   );

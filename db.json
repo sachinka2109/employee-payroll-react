@@ -12,6 +12,20 @@
       "date": "2020/09/21",
       "note": "asdawdaw",
       "id": 1
+    },
+    {
+      "name": "Shubham Kaythamwar",
+      "profileimg": "https://i.pravatar.cc/35?img=11",
+      "gender": "male",
+      "department": [
+        "HR",
+        "Sales",
+        "Finance"
+      ],
+      "salary": "45000",
+      "date": "2020/09/03",
+      "note": "Good Employee",
+      "id": 2
     }
   ]
 }
